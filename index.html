@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  img-src 'self' https://www2.0zz0.com data:;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+  font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com data:;
+  script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'self';
+  upgrade-insecure-requests;">
+  
+  
+<!-- أمن المتصفح -->
+
+
+<meta name="referrer" content="no-referrer">
+
+<title>نموذج التقييم  ( آراء المنشآت )</title>
+
+<!-- تحسين الشبكة للخطوط -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;600;800&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+
+<style>
+  :root{
+    --font-size:14px; --bg:#f3f3f3; --card:#ffffffc4; --text:#1f2937; --muted:#5d5d5d; --border:#e5e7eb; --input:#f9fafb;
+    --primary:#3b5bdbc9; --accent:#6d28d9c9; --excel:#107c41;
+    --s1-dark:#345b66c9; --s1-light:#eaf2f5c9; --s2-dark:#3b6547c9; --s2-light:#eaf3eec9;
+    --s3-dark:#805e2bc9; --s3-light:#f4efe5c9; --s4-dark:#5c4c79c9; --s4-light:#eeeaf5c9;
+    --s5-dark:#2f6b6bc9; --s5-light:#e9f3f3c9; --empty-border:#fca5a5;
+  }
+  *{box-sizing:border-box;font-family:"Baloo Bhaijaan 2",system-ui,Segoe UI,Tahoma,Arial;}
+  body{font-size:var(--font-size);margin:0;background:var(--bg);color:var(--text)}
+  .wrap{max-width:1000px;margin:3px auto;padding:8px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px}
+  h1{margin:0 0 10px;font-size:22px}
+  .muted{margin:0 0 14px;color:var(--muted);font-size:16px}
+  .grid{display:grid;gap:12px}
+  @media(min-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
+  .field{display:flex;flex-direction:column;gap:6px}
+  label{font-size:15px;color:var(--muted)}
+  input,textarea,button{font-family:inherit}
+  input,textarea{width:100%;padding:10px 12px;border:1px solid var(--border);background:var(--input);border-radius:10px;font-size:14px;transition:border-color .1s}
+  textarea{min-height:80px;resize:vertical}
+  input:focus,textarea:focus{outline:2px solid #3b5bdb33;border-color:#3b5db55}
+  .is-empty{border-color:var(--empty-border)!important}
+  .step-box{padding:12px;border-radius:12px;margin-bottom:20px;border:1px solid var(--border)}
+  .s1-box{background:var(--s1-light)} .s2-box{background:var(--s2-light)} .s3-box{background:var(--s3-light)} .s4-box{background:var(--s4-light)} .s5-box{background:var(--s5-light)}
+  .step{display:flex;align-items:center;gap:7px;font-weight:600;padding:10px 12px;border-radius:10px;border:1px solid var(--border);margin-bottom:10px;color:#fff}
+  .step i{font-size:16px}
+  .step small{opacity:.95;font-weight:600;}
+  .step.s1{background:var(--s1-dark)} .step.s2{background:var(--s2-dark)} .step.s3{background:var(--s3-dark)} .step.s4{background:var(--s4-dark)} .step.s5{background:var(--s5-dark)}
+  .ev{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid var(--border);border-radius:12px;background:#fff}
+  .ev-q{font-size:14.5px;line-height:1.6}
+  .ev-row{display:flex;align-items:center;gap:12px}
+  .ev-num{min-width:36px;text-align:center;font-weight:600}
+  .ev-bar{flex:1}
+  input[type=range]{direction:ltr;-webkit-appearance:none;appearance:none;width:100%;height:23px;border-radius:999px;background:#e5e7eb;outline:none;border:1px solid #e6e6e6;padding:0}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#222;border:0;cursor:pointer}
+  input[type=range]::-moz-range-thumb{width:22px;height:22px;border:none;border-radius:50%;background:#222;cursor:pointer}
+  .ev-label{font-size:16px;color:#475569;margin-inline-start:48px}
+  .footer{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-start;margin-top:18px}
+  .btn{padding:11px 16px;border:1px solid var(--border);border-radius:10px;background:var(--primary);color:#fff;cursor:pointer;font-weight:600}
+  .btn-red{background:#dc2626c9;} .btn-undo{background:#1b9c9feb;} .btn:disabled{opacity:.6;cursor:not-allowed}
+  .inline{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .mini-btn{padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:var(--accent);color:#fff;cursor:pointer;font-weight:600}
+  .file-wrap{display:flex;align-items:center;gap:10px}
+  .file-btn{display:inline-block;padding:10px 14px;border-radius:10px;background:#2e7d32d4;color:#fff;font-weight:600;cursor:pointer;border:1px solid var(--border);}
+  .file-name{position:relative;display:inline-flex;align-items:center;gap:8px;font-size:16px;color:#374151;background:#fff;border:1px solid var(--border);padding:8px 25px 8px 10px;border-radius:10px;min-height:38px}
+  .file-name .fa-file-excel{color:var(--excel);position:absolute;right:8px;top:50%;transform:translateY(-50%);display:none}
+  .sep{border:0;border-top:1px dashed #cfd8e3;margin:14px 0}
+  .section{font-weight:600;margin:4px 0 8px;color:#374151}
+  .subhead{font-weight:600;margin:2px 0 8px;color:#374151}
+  #toTop{position:fixed;bottom:18px;left:18px;display:none;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#374151;color:#fff;cursor:pointer;font-weight:600;z-index:50}
+  #howtoModal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:10000}
+  #howtoModal.show{display:flex;}
+  #howtoModal .modal-backdrop{position:absolute;inset:0;background:#ffffff;}
+  #howtoModal .modal-content{position:relative;max-width:95vw;max-height:92vh;overflow:hidden;background:#000;}
+  #howtoModal img{display:block;max-width:95vw;max-height:92vh;width:auto;height:auto;object-fit:contain;background:#000;cursor:pointer}
+  #howtoModal .modal-close{position:absolute;top:17px;left:1px;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:#ff6565;color:#fff;cursor:pointer;z-index:10001}
+  .step-n{display:inline-flex;align-items:center;justify-content:center;width:3px;height:36px;font-weight:800;font-size:60px;line-height:1;margin-inline-end:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>نموذج التقييم  ( آراء المنشآت )</h1>
+    <p class="muted">
+      اعداد وتصميم : راشد سعد راشد الدوسري
+      <button id="howtoBtn" type="button" class="mini-btn" style="margin-inline-start:8px">
+        <i class="fa-solid fa-circle-question"></i> شرح الأداة
+      </button>
+    </p>
+
+    <!-- 1 -->
+    <div class="step-box s1-box">
+      <div class="step s1"><span class="step-n">1</span>
+      <i class="fa-solid fa-file-arrow-up"></i> <small>الخطوة الأولى:</small> رفع ملف "نموذج التقييم  ( آراء المنشآت ).xlsx"</div>
+      <div class="field">
+        <label>ملف القالب (xlsx)</label>
+        <div class="file-wrap">
+          <input id="tpl" type="file" accept=".xlsx" hidden>
+          <label for="tpl" class="file-btn"><i class="fa-solid fa-folder-open"></i> اختيار ملف</label>
+          <span id="tplName" class="file-name">
+            <i class="fa-solid fa-file-excel" title="ملف Excel"></i>
+            <span id="tplNameText">لم يتم اختيار ملف</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="step-box s2-box">
+      <div class="step s2"><span class="step-n">2</span>
+      <i class="fa-solid fa-clipboard-list"></i> <small>الخطوة الثانية:</small> لصق الصف الذي نسخته من <b>جدول تقييم آراء أصحاب المنشآت</b></div>
+      <div class="field">
+        <label>الصق الصف هنا</label>
+        <textarea id="paste_row"></textarea>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="step-box s3-box">
+      <div class="step s3"><span class="step-n">3</span>
+      <i class="fa-solid fa-list-check"></i> <small>الخطوة الثالثة:</small> لصق الصف الذي نسخته من <b>جدول البنود المرصودة داخل المنشأة</b></div>
+      <div class="field">
+        <label>الصق الصف هنا</label>
+        <textarea id="paste_row_observed"></textarea>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="step-box s4-box">
+      <div class="step s4"><span class="step-n">4</span>
+      <i class="fa-solid fa-pen-to-square"></i> <small>الخطوة الرابعة:</small> مراجعة الخانات والتأكد من صحتها</div>
+
+      <div class="subhead">المعلومات</div>
+      <div class="grid">
+        <div class="field"><label>التاريخ</label><input id="date" type="date"></div>
+        <div class="field"><label>ID (الرقم)</label><input id="id_no" type="text"></div>
+
+        <div class="field"><label>اسم الموظف</label><input id="emp_name" type="text"></div>
+        <div class="field"><label>رقم الرخصة</label><input id="license_no" type="text"></div>
+
+        <div class="field"><label>اسم المنشأة (بالرخصة)</label><input id="lic_name" type="text"></div>
+        <div class="field"><label>اسم المنشأة (باللوحة)</label><input id="sign_name" type="text"></div>
+
+        <div class="field"><label>البلدية</label><input id="municipality" type="text"></div>
+        <div class="field"><label>الحي</label><input id="district" type="text"></div>
+
+        <div class="field"><label>الشارع</label><input id="street" type="text"></div>
+        <div class="field"><label>اسم صاحب المنشأة</label><input id="owner_name" type="text"></div>
+
+        <div class="field"><label>اسم وكيل/مشرف/عامل</label><input id="agent_name" type="text"></div>
+        <div class="field"><label>جوال صاحب المنشأة</label><input id="phone1" type="text" inputmode="numeric"></div>
+
+        <div class="field"><label>جوال وكيل/مشرف/عامل</label><input id="phone2" type="text" inputmode="numeric"></div>
+        <div class="field"><label>اسم / توقيع المشرف الميداني</label><input id="field_sup_sign" type="text"></div>
+      </div>
+
+      <hr class="sep">
+
+      <div class="section">التقييمات (0 → 100)</div>
+      <div class="grid">
+        <div class="ev"><div class="ev-q">ما مدى التزام المراقب بالسلوك الاحترافي خلال الزيارات السابقة؟</div><div class="ev-row"><div class="ev-num" id="ev1v">70</div><div class="ev-bar"><input id="ev1" type="range" min="0" max="100" step="1" value="70"></div></div><div class="ev-label" id="ev1l">متوسط 70</div></div>
+        <div class="ev"><div class="ev-q">ما مدى التزام المراقب بالمظهر الاحترافي خلال الزيارات السابقة؟</div><div class="ev-row"><div class="ev-num" id="ev2v">70</div><div class="ev-bar"><input id="ev2" type="range" min="0" max="100" step="1" value="70"></div></div><div class="ev-label" id="ev2l">متوسط 70</div></div>
+        <div class="ev"><div class="ev-q">ما مدى رضاك عن تقديم المراقب لنفسه خلال الزيارات السابقة؟</div><div class="ev-row"><div class="ev-num" id="ev3v">70</div><div class="ev-bar"><input id="ev3" type="range" min="0" max="100" step="1" value="70"></div></div><div class="ev-label" id="ev3l">متوسط 70</div></div>
+        <div class="ev"><div class="ev-q">هل قام المراقب بشرح للملاحظات، في حال وجودها؟</div><div class="ev-row"><div class="ev-num" id="ev4v">70</div><div class="ev-bar"><input id="ev4" type="range" min="0" max="100" step="1" value="70"></div></div><div class="ev-label" id="ev4l">متوسط 70</div></div>
+        <div class="ev"><div class="ev-q">ما مدى رضاك عن إجابة المراقب للاستفسارات بشكل واضح ووافي؟</div><div class="ev-row"><div class="ev-num" id="ev5v">70</div><div class="ev-bar"><input id="ev5" type="range" min="0" max="100" step="1" value="70"></div></div><div class="ev-label" id="ev5l">متوسط 70</div></div>
+        <div class="ev"><div class="ev-q">ما مدى رضاك عن شرح المراقب للملاحظات، في حال وجودها؟</div><div class="ev-row"><div class="ev-num" id="ev6v">70</div><div class="ev-bar"><input id="ev6" type="range" min="0" max="100" step="1" value="70"></div></div><div class="ev-label" id="ev6l">متوسط 70</div></div>
+        <div class="ev"><div class="ev-q">هل أخذ المراقب الوقت الكافي أثناء الزيارة؟</div><div class="ev-row"><div class="ev-num" id="ev7v">70</div><div class="ev-bar"><input id="ev7" type="range" min="0" max="100" step="1" value="70"></div></div><div class="ev-label" id="ev7l">متوسط 70</div></div>
+      </div>
+
+      <hr class="sep">
+
+      <div class="section">مشرف (9 أسطر)</div>
+      <div class="grid">
+        <input id="note1" placeholder="ملاحظة 1"><input id="note2" placeholder="ملاحظة 2"><input id="note3" placeholder="ملاحظة 3"><input id="note4" placeholder="ملاحظة 4"><input id="note5" placeholder="ملاحظة 5"><input id="note6" placeholder="ملاحظة 6"><input id="note7" placeholder="ملاحظة 7"><input id="note8" placeholder="ملاحظة 8"><input id="note9" placeholder="ملاحظة 9">
+      </div>
+      <div class="field" style="margin-top:10px">
+        <div class="inline">
+          <label>باقي البنود الزيادة اللي تحت لن تُضاف الى ملف الاكسل ترا - استخدم زر دمج كل بندين اثنين بنفس الصف بينهم | لتظهر في ملف الاكسل الرسمي.</label>
+          <button id="mergePairsBtn" type="button" class="mini-btn"><i class="fa-solid fa-compress"></i> دمج بندين اثنين </button>
+        </div>
+        <textarea id="note_extra" placeholder="أي أسطر زائدة من (البنود المرصودة) تُجمع هنا تلقائياً"></textarea>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="step-box s5-box">
+      <div class="step s5"><span class="step-n">5</span>
+      <i class="fa-solid fa-file-excel"></i> <small>الخطوة الخامسة:</small> تنزيل الملف كـ Excel أكسل </div>
+      <div class="footer">
+        <button class="btn" id="downloadBtn" type="button"><i class="fa-solid fa-download"></i> تنزيل كـ Excel أكسل </button>
+        <button class="btn btn-red" id="clearBtn" type="button"><i class="fa-solid fa-eraser"></i> مسح الخانات </button>
+        <button class="btn btn-undo" id="undoBtn" type="button" disabled><i class="fa-solid fa-rotate-left"></i> ارجاع اللي مسحته </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- نافذة شرح الأداة -->
+<div id="howtoModal" aria-hidden="true">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="howtoClose" title="إغلاق"><i class="fa-solid fa-xmark"></i></button>
+    <img src="https://www2.0zz0.com/2025/10/11/00/983975517.png" alt="شرح طريقة عمل الأداة" title="اضغط على الصورة للإغلاق" loading="lazy">
+  </div>
+</div>
+
+<!-- زر للأعلى -->
+<button id="toTop" title="إلى الأعلى"><i class="fa-solid fa-arrow-up"></i> للأعلى</button>
+
+<!-- حذف التحميل المسبق للمكتبات الثقيلة، سنحمّلها عند الحاجة -->
+<script>
+/* ===== إعداد القالب ===== */
+const SHEET_NAME='نموذج تقييم  1';
+const CELL_MAP={
+  date:'G4:J4',id_no:'I5:J5',emp_name:'B5:H5',lic_name:'C7:D7',sign_name:'F7:H7',license_no:'J7',
+  municipality:'C8:D8',district:'F8:H8',street:'J8',owner_name:'C9:H9',phone1:'J9',agent_name:'C10:H10',phone2:'J10',
+  ev1:'E15',ev2:'E16',ev3:'E17',ev4:'E18',ev5:'E19',ev6:'E20',ev7:'E21',
+  note1:'B24:J24',note2:'B25:J25',note3:'B26:J26',note4:'B27:J27',note5:'B28:J28',note6:'B29:J29',note7:'B30:J30',note8:'B31:J31',note9:'B32:J32',
+  field_sup_sign:'H34:J34'
+};
+const firstCell=a=>(a||'').split(':')[0].trim();
+const v=id=>(document.getElementById(id)?.value??'').trim();
+
+/* ===== تحميل كسول للمكتبات الثقيلة عند الطلب ===== */
+let libsLoaded=false;
+function loadHeavyLibs(){
+  if(libsLoaded) return Promise.resolve();
+  return new Promise((resolve,reject)=>{
+    const add=(src)=>new Promise((res,rej)=>{
+      const s=document.createElement('script');
+      s.src=src; s.async=true; s.onload=()=>res(); s.onerror=()=>rej(new Error('فشل تحميل '+src));
+      document.head.appendChild(s);
+    });
+    // ExcelJS + FileSaver من CDN
+    Promise.resolve()
+      .then(()=>add('https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js'))
+      .then(()=>add('https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js'))
+      .then(()=>{libsLoaded=true; resolve();})
+      .catch(reject);
+  });
+}
+
+/* ===== لصق "تقييم آراء أصحاب المنشآت" ===== */
+const PASTE_MAP = [
+  { idx:1,field:'emp_name' },{ idx:3,field:'id_no' },
+  { idx:5,field:'lic_name' },{ idx:6,field:'sign_name' },
+  { idx:7,field:'license_no' },{ idx:8,field:'municipality' },
+  { idx:9,field:'district' },{ idx:10,field:'street' },
+  { idx:11,field:'owner_name' },{ idx:12,field:'agent_name' },
+  { idx:13,field:'phone2' },
+  { idx:14,field:'ev1',isEval:true },
+  { idx:15,field:'ev2',isEval:true },
+  { idx:16,field:'ev3',isEval:true },
+  { idx:17,field:'ev5',isEval:true },
+  { idx:18,field:'ev4',isYesNo:true },
+  { idx:19,field:'ev6',isEval:true },
+  { idx:20,field:'ev7',isYesNo:true }
+];
+
+/* تحويل النصوص العربية إلى درجات */
+function toAsciiDigits(s){
+  return String(s||'')
+    .replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d))
+    .replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
+}
+function normalizeAr(s){
+  return toAsciiDigits(String(s||'').trim())
+    .replace(/[\u064B-\u065F\u0670\u0640]/g,'')
+    .replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي')
+    .replace(/\s+/g,' ').toLowerCase();
+}
+function evalScoreFromText(t){
+  const x = normalizeAr(t);
+  if(!x) return 0;
+  if(x.includes('راضي جدا جدا') || x==='راضي جدا') return 100;
+  if(x==='راضي') return 80;
+  if(x==='متوسط') return 70;
+  if(x==='غير راضي') return 64;
+  if(x.includes('غير راضي جدا') || x.includes('غير راض جدا')) return 25;
+  const num = Number(x.replace(/[^0-9.]/g,''));
+  return Number.isFinite(num) ? Math.max(0, Math.min(100, num)) : 0;
+}
+function yesNoToScore(t){
+  const x = normalizeAr(t);
+  if(x.startsWith('نعم')) return 100;
+  if(x.startsWith('لا') || x==='كلا') return 25;
+  return 0;
+}
+
+/* لصق من تقييم الآراء */
+function pickDataLine(txt){
+  const lines=(txt||'').split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+  return lines[lines.length-1]||'';
+}
+function parseDateFromText(s){
+  const m = String(s||'').match(/(\d{4})[\/\-](\d{2})[\/\-](\d{2})/);
+  if(!m) return '';
+  return `${m[1]}-${m[2]}-${m[3]}`;
+}
+let highlightActive=false;
+function fillFromPastedRow(txt){
+  const line=pickDataLine(txt);
+  if(!line) return;
+  const parts=line.split(/\t|\|/).map(s=>s.trim());
+
+  const d = parseDateFromText(parts[0]||'');
+  if(d){ const el=document.getElementById('date'); if(el) el.value = d; }
+
+  PASTE_MAP.forEach(m=>{
+    const val = parts[m.idx] ?? '';
+    const el  = document.getElementById(m.field);
+    if(!el) return;
+    if(m.isEval){
+      el.value = evalScoreFromText(val);
+      el.dispatchEvent(new Event('input',{bubbles:true}));
+    }else if(m.isYesNo){
+      el.value = yesNoToScore(val);
+      el.dispatchEvent(new Event('input',{bubbles:true}));
+    }else{
+      if(val) el.value = val;
+    }
+  });
+
+  highlightActive=true; highlightEmptyFields();
+}
+
+/* Parser TSV للبنود المرصودة */
+function parseTSVRows(txt){
+  const rows=[]; let row=[], field=''; let inQuotes=false;
+  for(let i=0;i<txt.length;i++){
+    const ch=txt[i];
+    if(ch === '"'){
+      if(inQuotes && txt[i+1] === '"'){ field+='"'; i++; } else { inQuotes = !inQuotes; }
+    }else if(ch === '\t' && !inQuotes){
+      row.push(field); field='';
+    }else if((ch === '\n' || ch === '\r') && !inQuotes){
+      if(field!=='' || row.length>0){ row.push(field); rows.push(row); row=[]; field=''; }
+      if(ch === '\r' && txt[i+1] === '\n') i++;
+    }else{
+      field += ch;
+    }
+  }
+  if(field!=='' || row.length>0){ row.push(field); rows.push(row); }
+  return rows.filter(r=>r.some(x=>x.trim()!==''));
+}
+
+/* لصق البنود المرصودة → 9 أسطر + الباقي */
+function fillFromObservedRow(txt){
+  const rows = parseTSVRows(txt);
+  if(!rows.length) return;
+  const parts = rows[rows.length-1];
+  const observedRaw = (parts[4]||'').trim();
+  const lines = observedRaw.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+
+  for(let i=0;i<9;i++){
+    const el=document.getElementById('note'+(i+1));
+    if(el) el.value = lines[i] || '';
+  }
+  document.getElementById('note_extra').value = lines.slice(9).join('\n');
+
+  highlightActive=true; highlightEmptyFields();
+}
+
+/* دمج كل بندين */
+function mergePairs(){
+  const all=[];
+  for(let i=1;i<=9;i++){
+    const vv=(document.getElementById('note'+i).value||'').trim();
+    if(vv) all.push(vv);
+  }
+  const extra=(document.getElementById('note_extra').value||'')
+    .split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+  all.push(...extra);
+
+  if(all.length<=9){ alert('ما فيه حاجة للدمج؛ عدد البنود لا يتجاوز 9.'); return; }
+
+  const merged=[];
+  for(let i=0;i<all.length;i+=2){
+    if(i+1<all.length) merged.push(all[i]+' | '+all[i+1]);
+    else merged.push(all[i]);
+  }
+  for(let i=1;i<=9;i++){
+    document.getElementById('note'+i).value = merged[i-1] || '';
+  }
+  document.getElementById('note_extra').value = merged.slice(9).join('\n');
+
+  if(highlightActive) highlightEmptyFields();
+}
+
+/* تمييز الخانات الفارغة */
+const EMPTY_IDS = [
+  'date','id_no','emp_name','license_no','lic_name','sign_name',
+  'municipality','district','street','owner_name','agent_name',
+  'phone1','phone2','field_sup_sign',
+  'note1','note2','note3','note4','note5','note6','note7','note8','note9','note_extra'
+];
+function highlightEmptyFields(){
+  EMPTY_IDS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    const isEmpty = (el.value||'').trim()==='';
+    el.classList.toggle('is-empty', isEmpty);
+  });
+}
+function clearEmptyHighlights(){
+  EMPTY_IDS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.classList.remove('is-empty');
+  });
+}
+/* تحديث التمييز أثناء الكتابة */
+EMPTY_IDS.forEach(id=>{
+  const el=document.getElementById(id);
+  if(!el) return;
+  el.addEventListener('input', ()=>{ if(highlightActive) highlightEmptyFields(); });
+});
+
+/* مسح/تراجع */
+const ALL_FIELD_IDS = [
+  ...EMPTY_IDS,
+  'ev1','ev2','ev3','ev4','ev5','ev6','ev7',
+  'paste_row','paste_row_observed'
+];
+function snapshotFields(){
+  const snap={};
+  ALL_FIELD_IDS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    snap[id]=el.value;
+  });
+  snap._highlightActive = highlightActive;
+  return snap;
+}
+function applySnapshot(snap){
+  if(!snap) return;
+  ALL_FIELD_IDS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    if(snap.hasOwnProperty(id)){
+      el.value = snap[id] ?? '';
+      if(/^ev[1-7]$/.test(id)){
+        el.dispatchEvent(new Event('input',{bubbles:true}));
+      }
+    }
+  });
+  highlightActive = !!snap._highlightActive;
+  if(highlightActive) highlightEmptyFields(); else clearEmptyHighlights();
+}
+let lastSnapshot=null;
+function clearFields(){
+  lastSnapshot = snapshotFields();
+  ['paste_row','paste_row_observed'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.value='';
+  });
+  EMPTY_IDS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.value='';
+  });
+  for(let i=1;i<=7;i++){
+    const el=document.getElementById('ev'+i);
+    if(el){ el.value=70; el.dispatchEvent(new Event('input',{bubbles:true})); }
+  }
+  highlightActive=false; clearEmptyHighlights();
+  document.getElementById('undoBtn').disabled = false;
+}
+function undoClear(){
+  applySnapshot(lastSnapshot);
+  document.getElementById('undoBtn').disabled = true;
+}
+
+/* تنسيق التاريخ / تركيب القيمة */
+function formatDateStr(d){
+  if(!d) return '';
+  const dt=new Date(d);
+  if(Number.isNaN(dt.getTime())) return d;
+  const y=dt.getFullYear(),m=String(dt.getMonth()+1).padStart(2,'0'),dd=String(dt.getDate()).padStart(2,'0');
+  return `${y}/${m}/${dd}`;
+}
+function composeValue(k,r){
+  if(k==='emp_name'&&r){return `اسم الموظف     ${r}     Employee’s Name`;}
+  if(k==='date'){const s=formatDateStr(r);return s?`التاريخ : ${s}`:'';}
+  if(k==='id_no'&&r){return `رقم الموظف    ${r}    ID No. `;}
+  return r;
+}
+
+/* ألوان الشريط + التسميات */
+function levelInfo(v){
+  if(v>=100) return {c:"#86efac", l:"1ضي جدا 100"};
+  if(v>=80) return {c:"#bbf7d0", l:"راضي 80"};
+  if(v>=70) return {c:"#fde68a", l:"متوسط 70"};
+  if(v>=64) return {c:"#fbbf24", l:"غير راضي 64"};
+  return           {c:"#fca5a5", l:"غير راضي جدا 25"};
+}
+function paintRange(i,v){
+  const p=Math.max(0,Math.min(100,Number(v)||0)), {c}=levelInfo(p);
+  i.style.background=`linear-gradient(to right, ${c} 0%, ${c} ${p}%, #e5e7eb ${p}%, #e5e7eb 100%)`;
+}
+function hookRange(id){
+  const el=document.getElementById(id), num=document.getElementById(id+'v'), lbl=document.getElementById(id+'l');
+  const up=()=>{const val=Math.max(0,Math.min(100,Number(el.value)||0)); num.textContent=val; lbl.textContent=levelInfo(val).l; paintRange(el,val);};
+  el.addEventListener('input',up); up();
+}
+['ev1','ev2','ev3','ev4','ev5','ev6','ev7'].forEach(hookRange);
+
+/* اسم الملف */
+function makeFilename(empRaw,dateRaw){
+  const ds=(()=>{if(!dateRaw)return'';const dt=new Date(dateRaw);if(Number.isNaN(dt.getTime()))return String(dateRaw).replace(/\//g,'-');const y=dt.getFullYear(),m=String(dt.getMonth()+1).padStart(2,'0'),d=String(dt.getDate()).padStart(2,'0');return`${y}-${m}-${d}`;})();
+  const emp=(empRaw||'').trim().replace(/\s+/g,' ');
+  const safeEmp=emp.replace(/[\\/:*?"<>|]/g,' ');
+  return safeEmp && ds ? `تقييم المنشات - ${safeEmp} ${ds}.xlsx`
+       : safeEmp       ? `تقييم المنشات - ${safeEmp}.xlsx`
+       : ds            ? `تقييم المنشات - ${ds}.xlsx`
+                       : `تقييم المنشات.xlsx`;
+}
+
+/* تنزيل الإكسل (يحمّل المكتبات أولاً عند الحاجة) */
+async function fillAndDownload(){
+  try{
+    const f=document.getElementById('tpl').files[0];
+    if(!f){alert('اختر ملف القالب أولاً');return;}
+
+    // تحميل ExcelJS وFileSaver فقط وقت الحاجة
+    await loadHeavyLibs();
+
+    const wb=new ExcelJS.Workbook();await wb.xlsx.load(await f.arrayBuffer());
+    let ws=wb.getWorksheet(SHEET_NAME)||wb.worksheets?.[0];
+    if(!ws){alert('لا توجد ورقة عمل داخل القالب');return;}
+
+    const emp=v('emp_name'),date=v('date');
+    const data={
+      date:date,id_no:v('id_no'),emp_name:emp,license_no:v('license_no'),lic_name:v('lic_name'),sign_name:v('sign_name'),
+      municipality:v('municipality'),district:v('district'),street:v('street'),owner_name:v('owner_name'),agent_name:v('agent_name'),
+      phone1:v('phone1'),phone2:v('phone2'),
+      ev1:Number(document.getElementById('ev1').value)||0,
+      ev2:Number(document.getElementById('ev2').value)||0,
+      ev3:Number(document.getElementById('ev3').value)||0,
+      ev4:Number(document.getElementById('ev4').value)||0,
+      ev5:Number(document.getElementById('ev5').value)||0,
+      ev6:Number(document.getElementById('ev6').value)||0,
+      ev7:Number(document.getElementById('ev7').value)||0,
+      note1:v('note1'),note2:v('note2'),note3:v('note3'),note4:v('note4'),note5:v('note5'),
+      note6:v('note6'),note7:v('note7'),note8:v('note8'),note9:v('note9'),
+      field_sup_sign:v('field_sup_sign')
+    };
+
+    for(const [k,r] of Object.entries(data)){
+      const addr=firstCell(CELL_MAP[k]); if(!addr) continue;
+      const c=ws.getCell(addr);
+      if(c && c.value && typeof c.value==='object' && 'formula' in c.value) continue;
+      c.value=/^ev[1-7]$/.test(k)?Number(r)||0:composeValue(k,r);
+    }
+
+    const out=await wb.xlsx.writeBuffer();
+    saveAs(new Blob([out]), makeFilename(emp,date));
+	alert('لاتنسى مراجعة ملف الاكسل قبل ارسالها للايميل');
+	
+	
+	
+  }catch(e){
+    console.error(e);
+    alert('حدث خطأ أثناء إنشاء الملف');
+  }
+}
+
+/* زر للأعلى */
+const toTopBtn=document.getElementById('toTop');
+window.addEventListener('scroll', ()=>{
+  toTopBtn.style.display = window.scrollY > 320 ? 'flex' : 'none';
+},{passive:true});
+toTopBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+/* ربط الأحداث */
+document.getElementById('downloadBtn')?.addEventListener('click', fillAndDownload);
+document.getElementById('tpl')?.addEventListener('change', e=>{
+  const name=e.target.files?.[0]?.name||'لم يتم اختيار ملف';
+  const icon=document.querySelector('#tplName .fa-file-excel');
+  document.getElementById('tplNameText').textContent=name;
+  icon.style.display = /\.(xlsx|xls)$/i.test(name) ? 'inline-block' : 'none';
+});
+document.getElementById('paste_row')?.addEventListener('paste', e=>{ setTimeout(()=>fillFromPastedRow(e.target.value),0); });
+document.getElementById('paste_row')?.addEventListener('input', e=>{ fillFromPastedRow(e.target.value); });
+document.getElementById('paste_row_observed')?.addEventListener('paste', e=>{ setTimeout(()=>fillFromObservedRow(e.target.value),0); });
+document.getElementById('paste_row_observed')?.addEventListener('input', e=>{ fillFromObservedRow(e.target.value); });
+document.getElementById('mergePairsBtn')?.addEventListener('click', mergePairs);
+document.getElementById('clearBtn')?.addEventListener('click', clearFields);
+document.getElementById('undoBtn')?.addEventListener('click', undoClear);
+
+/* نافذة الشرح: فتح/إغلاق + إغلاق عند الضغط على الصورة */
+document.getElementById('howtoBtn')?.addEventListener('click', ()=>{
+  document.getElementById('howtoModal')?.classList.add('show');
+});
+document.getElementById('howtoClose')?.addEventListener('click', ()=>{
+  document.getElementById('howtoModal')?.classList.remove('show');
+});
+document.getElementById('howtoModal')?.addEventListener('click', (e)=>{
+  if(e.target.id==='howtoModal' || e.target.classList.contains('modal-backdrop')){
+    document.getElementById('howtoModal')?.classList.remove('show');
+  }
+});
+document.querySelector('#howtoModal img')?.addEventListener('click', ()=>{
+  document.getElementById('howtoModal')?.classList.remove('show');
+});
+document.addEventListener('keydown', (e)=>{
+  if(e.key==='Escape'){ document.getElementById('howtoModal')?.classList.remove('show'); }
+});
+</script>
+
+
+<footer style="margin:3px auto 3px;max-width:1000px;text-align:center;color:#475569;font-size:14px;line-height:1.3">
+  <div>راشد سعد راشد الدوسري</div>
+  <div>أداة اراء المنشأت</div>
+  <div>الاصدار 1.0.0</div>
+</footer>
+
+
+
+</body>
+</html>
