@@ -1,19 +1,38 @@
+<!-- راشد سعد راشد الدوسري -->
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>نموذج التقييم (آراء المنشآت)</title>
+
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  img-src 'self' https://www2.0zz0.com data:;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+  font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com data:;
+  script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'self';
+  upgrade-insecure-requests;">
+
+<meta name="referrer" content="no-referrer">
+<title>نموذج التقييم  ( آراء المنشآت )</title>
+
+<!-- تحسين الشبكة للخطوط -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;600;800&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="https://www2.0zz0.com/2025/10/12/17/928128913.png" sizes="32x32">
 <link rel="apple-touch-icon" href="https://www2.0zz0.com/2025/10/12/17/928128913.png">
-
-<!-- خطوط وأيقونات -->
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;600;800&display=swap" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
 
 <style>
   :root{
@@ -40,8 +59,11 @@
   .is-empty{border-color:var(--empty-border)!important}
   .step-box{padding:12px;border-radius:12px;margin-bottom:20px;border:1px solid var(--border)}
   .s1-box{background:var(--s1-light)} .s2-box{background:var(--s2-light)} .s3-box{background:var(--s3-light)} .s4-box{background:var(--s4-light)} .s5-box{background:var(--s5-light)}
-  .step{display:flex;align-items:center;gap:6px;font-weight:600;padding:10px 12px;border:1px solid var(--border);margin-bottom:10px;color:#fff}
-  .step i{font-size:16px}
+  .step{display:flex;
+  
+  border-radius: 10px;
+  align-items:center;gap: 6px;font-weight:600;padding:10px 12px;border:1px solid var(--border);margin-bottom:10px;color:#ffff}
+  .step i{font-size:16px;padding: 2px 3px 2px 2px;}
   .step small{opacity:.95;font-weight:600;}
   .step.s1{background:var(--s1-dark)} .step.s2{background:var(--s2-dark)} .step.s3{background:var(--s3-dark)} .step.s4{background:var(--s4-dark)} .step.s5{background:var(--s5-dark)}
   .ev{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid var(--border);border-radius:12px;background:#fff}
@@ -54,33 +76,45 @@
   input[type=range]::-moz-range-thumb{width:22px;height:22px;border:none;border-radius:50%;background:#222;cursor:pointer}
   .ev-label{font-size:16px;color:#475569;margin-inline-start:48px}
   .footer{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-start;margin-top:18px}
-  .btn{padding:10px 5px;border:1px solid var(--border);border-radius:10px;background:var(--primary);color:#fff;cursor:pointer;font-weight:600}
-  .btn-red{background:#dc2626c9;} .btn-undo{background:#1b9c9feb;} .btn:disabled{opacity:.6;cursor:not-allowed}
+  .btn{padding: 10px 5px;border:1px solid var(--border);border-radius:10px;background:var(--primary);color:#fff;cursor:pointer;font-weight:600}
+  .btn-red{background:#dc2626c9;} .btn-undo{background:#1b9c9feb;} .btn:disabled{opacity: 2.6;cursor:not-allowed}
+  .inline{display: flex;gap:10px;align-items:center;flex-wrap: wrap;}
   .mini-btn{padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:var(--accent);color:#fff;cursor:pointer;font-weight:600}
   .file-wrap{display:flex;align-items:center;gap:10px}
-  .file-btn{display:inline-block;padding:5px 18px;border-radius:10px;background:#2e7d32d4;color:#fff;font-weight:600;cursor:pointer;border:1px solid var(--border);}
-  .file-name{position:relative;display:inline-flex;align-items:center;gap:7px;font-size:15px;color:#374151;background:#fff;border:1px solid var(--border);padding:6px 23px;border-radius:10px;min-height:38px}
+  .file-btn{display:inline-block;padding: 5px 18px;border-radius:10px;background:#2e7d32d4;color:#fff;font-weight:600;cursor:pointer;border:1px solid var(--border);}
+  .file-name{position:relative;display:inline-flex;align-items:center;gap: 7px;font-size: 15px;color:#374151;background:#fff;border:1px solid var(--border);padding: 6px 23px 6px 23px;border-radius: 10px;min-height: 38px;x}
   .file-name .fa-file-excel{color:var(--excel);position:absolute;right:8px;top:50%;transform:translateY(-50%);display:none}
-  .sep{border:0;border-top:2px dashed #d1d1d1;margin:16px 0}
+  .sep{border:0;border-top: 2px dashed #d1d1d1;margin: 16px 0;}
   .section{font-weight:600;margin:4px 0 8px;color:#374151}
   .subhead{font-weight:600;margin:2px 0 8px;color:#374151}
+  #toTop{position:fixed;bottom:18px;left:18px;display:none;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#374151;color:#fff;cursor:pointer;font-weight:600;z-index:50}
+  #howtoModal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:10000}
+  #howtoModal.show{display:flex;}
+  #howtoModal .modal-backdrop{position:absolute;inset:0;background:#ffffff;}
+  #howtoModal .modal-content{position:relative;max-width:95vw;max-height:92vh;overflow:hidden;background:#000;}
+  #howtoModal img{display:block;max-width:95vw;max-height:92vh;width:auto;height:auto;object-fit:contain;background:#000;cursor:pointer}
+  #howtoModal .modal-close{position:absolute;top:17px;left:1px;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:#ff6565;color:#fff;cursor:pointer;z-index:10001}
+  .step-n{display:inline-flex;align-items:center;justify-content:center;width:3px;height:36px;font-weight:800;font-size:60px;line-height:1;color:#ffffffe6;margin-inline-end:6px}
 
-  /* إشعار وسط الشاشة بزر "حسناً" */
+  /* إشعار بنمط نافذة وسط الشاشة */
   #toasts{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:99999;pointer-events:none}
-  .toast{pointer-events:auto;min-width:280px;max-width:92vw;padding:12px 14px 46px;border-radius:12px;text-align:center;background:#111;color:#fff;opacity:.98;box-shadow:0 8px 30px #0006;position:relative}
+  
+  .toast{pointer-events: auto;
+    min-width: 280px;
+    max-width: 90vw;
+    padding: 40px 10px 80px;
+    border-radius: 13px;
+    text-align: center;
+    background: #111;
+    color: #fff;
+    opacity: .98;
+    /* box-shadow: 1px 0px 0px 20px #0006; */
+    position: relative;}
+  
+
   .toast.ok{background:#111}.toast.warn{background:#202b3a}.toast.err{background:#3a2020}
   .toast .toast-btn{position:absolute;left:12px;right:12px;bottom:10px;padding:10px 12px;border-radius:10px;border:1px solid #ffffff2a;background:#2563eb;color:#fff;font-weight:700;cursor:pointer}
-
-  /* زر للأعلى */
-  #toTop{position:fixed;bottom:18px;left:18px;display:none;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#374151;color:#fff;cursor:pointer;font-weight:600;z-index:50}
-
-  /* مودال شرح الأداة */
-  #howtoModal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:10000}
-  #howtoModal.show{display:flex}
-  #howtoModal .backdrop{position:absolute;inset:0;background:#0008}
-  #howtoModal .box{position:relative;max-width:95vw;max-height:92vh;overflow:hidden;background:#000;border-radius:12px}
-  #howtoModal img{display:block;max-width:95vw;max-height:92vh;width:auto;height:auto;object-fit:contain;background:#000;cursor:pointer}
-  #howtoModal .close{position:absolute;top:10px;left:10px;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:0;background:#ef4444;color:#fff;cursor:pointer}
+  #toast-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:99998;display:none}
 </style>
 </head>
 <body>
@@ -96,7 +130,7 @@
 
     <!-- 1 -->
     <div class="step-box s1-box">
-      <div class="step s1"><i class="fa-solid fa-file-arrow-up"></i> <small>الخطوة 1:</small> رفع ملف القالب</div>
+      <div class="step s1"><span class="step-n">1</span><i class="fa-solid fa-file-arrow-up"></i> <small>الخطوة الأولى:</small> رفع ملف "نموذج التقييم  ( آراء المنشآت ).xlsx"</div>
       <div class="field">
         <label>ملف القالب (xlsx)</label>
         <div class="file-wrap">
@@ -112,7 +146,7 @@
 
     <!-- 2 -->
     <div class="step-box s2-box">
-      <div class="step s2"><i class="fa-solid fa-clipboard-list"></i> <small>الخطوة 2:</small> لصق صف تقييم آراء أصحاب المنشآت</div>
+      <div class="step s2"><span class="step-n">2</span><i class="fa-solid fa-clipboard-list"></i> <small>الخطوة الثانية:</small> لصق الصف الذي نسخته من <b>جدول تقييم آراء أصحاب المنشآت</b></div>
       <div class="field">
         <label>الصق الصف هنا</label>
         <textarea id="paste_row"></textarea>
@@ -121,7 +155,7 @@
 
     <!-- 3 -->
     <div class="step-box s3-box">
-      <div class="step s3"><i class="fa-solid fa-list-check"></i> <small>الخطوة 3:</small> لصق صف البنود المرصودة</div>
+      <div class="step s3"><span class="step-n">3</span><i class="fa-solid fa-list-check"></i> <small>الخطوة الثالثة:</small> لصق الصف الذي نسخته من <b>جدول البنود المرصودة داخل المنشأة</b></div>
       <div class="field">
         <label>الصق الصف هنا</label>
         <textarea id="paste_row_observed"></textarea>
@@ -130,7 +164,7 @@
 
     <!-- 4 -->
     <div class="step-box s4-box">
-      <div class="step s4"><i class="fa-solid fa-pen-to-square"></i> <small>الخطوة 4:</small> مراجعة البيانات</div>
+      <div class="step s4"><span class="step-n">4</span><i class="fa-solid fa-pen-to-square"></i> <small>الخطوة الرابعة:</small> مراجعة الخانات والتأكد من صحتها</div>
 
       <div class="subhead">المعلومات</div>
       <div class="grid">
@@ -152,7 +186,7 @@
 
       <hr class="sep">
 
-      <div class="section">التقييمات</div>
+      <div class="section">التقييمات (0 → 100)</div>
       <div class="grid">
         <div class="ev"><div class="ev-q">ما مدى التزام المراقب بالسلوك الاحترافي خلال الزيارات السابقة؟</div><div class="ev-row"><div class="ev-num" id="ev1v">70</div><div class="ev-bar"><input id="ev1" type="range" min="0" max="100" step="1" value="70"></div></div><div class="ev-label" id="ev1l">متوسط 70</div></div>
         <div class="ev"><div class="ev-q">ما مدى التزام المراقب بالمظهر الاحترافي خلال الزيارات السابقة؟</div><div class="ev-row"><div class="ev-num" id="ev2v">70</div><div class="ev-bar"><input id="ev2" type="range" min="0" max="100" step="1" value="70"></div></div><div class="ev-label" id="ev2l">متوسط 70</div></div>
@@ -165,44 +199,48 @@
 
       <hr class="sep">
 
-      <div class="section">ملاحظات المشرف</div>
+      <div class="section"> ملاحظات المشرف</div>
       <div class="grid">
         <input id="note1" placeholder="ملاحظة 1"><input id="note2" placeholder="ملاحظة 2"><input id="note3" placeholder="ملاحظة 3"><input id="note4" placeholder="ملاحظة 4"><input id="note5" placeholder="ملاحظة 5"><input id="note6" placeholder="ملاحظة 6"><input id="note7" placeholder="ملاحظة 7"><input id="note8" placeholder="ملاحظة 8"><input id="note9" placeholder="ملاحظة 9">
       </div>
       <div class="field" style="margin-top:10px">
-        <label>باقي البنود الزيادة تحت لن تُضاف لملف الإكسل — استخدم زر دمج كل بندين |</label>
-        <div style="margin-top:8px"><button id="mergePairsBtn" type="button" class="mini-btn"><i class="fa-solid fa-compress"></i> دمج بندين اثنين</button></div>
-        <textarea id="note_extra" placeholder="أي أسطر زائدة تُجمع هنا"></textarea>
+        <label>باقي البنود الزيادة اللي تحت لن تُضاف الى ملف الاكسل ترا - استخدم زر دمج كل بندين اثنين بنفس الصف بينهم | لتظهر في ملف الاكسل الرسمي.</label>
+        <!-- الزر صار تحت النص مباشرة -->
+        <div style="margin-top:8px">
+          <button id="mergePairsBtn" type="button" class="mini-btn"><i class="fa-solid fa-compress"></i> دمج بندين اثنين </button>
+        </div>
+        <textarea id="note_extra" placeholder="أي أسطر زائدة من (البنود المرصودة) تُجمع هنا تلقائياً"></textarea>
       </div>
     </div>
 
     <!-- 5 -->
     <div class="step-box s5-box">
-      <div class="step s5"><i class="fa-solid fa-file-excel"></i> <small>الخطوة 5:</small> تنزيل الملف كـ Excel</div>
+      <div class="step s5"><span class="step-n">5</span><i class="fa-solid fa-file-excel"></i> <small>الخطوة الخامسة:</small> تنزيل الملف كـ Excel أكسل </div>
       <div class="footer">
-        <button class="btn" id="downloadBtn" type="button"><i class="fa-solid fa-download"></i> تنزيل كـ أكسل</button>
-        <button class="btn btn-red" id="clearBtn" type="button"><i class="fa-solid fa-eraser"></i> مسح الخانات</button>
-        <button class="btn btn-undo" id="undoBtn" type="button" disabled><i class="fa-solid fa-rotate-left"></i> ارجاع المسح</button>
+        <button class="btn" id="downloadBtn" type="button"><i class="fa-solid fa-download"></i> تنزيل كـ أكسل </button>
+        <button class="btn btn-red" id="clearBtn" type="button"><i class="fa-solid fa-eraser"></i> مسح الخانات </button>
+        <button class="btn btn-undo" id="undoBtn" type="button" disabled><i class="fa-solid fa-rotate-left"></i> ارجاع المسح </button>
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- نافذة شرح الأداة -->
+<div id="howtoModal" aria-hidden="true">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="howtoClose" title="إغلاق"><i class="fa-solid fa-xmark"></i></button>
+    <img src="https://www2.0zz0.com/2025/10/11/00/983975517.png" alt="شرح طريقة عمل الأداة" title="اضغط على الصورة للإغلاق" loading="lazy">
   </div>
 </div>
 
 <!-- زر للأعلى -->
 <button id="toTop" title="إلى الأعلى"><i class="fa-solid fa-arrow-up"></i> للأعلى</button>
 
-<!-- إشعارات -->
+<!-- حاوية إشعارات الصفحة + خلفية -->
 <div id="toasts" aria-live="polite"></div>
-
-<!-- مودال شرح الأداة -->
-<div id="howtoModal" aria-hidden="true">
-  <div class="backdrop"></div>
-  <div class="box">
-    <button class="close" id="howtoClose" title="إغلاق"><i class="fa-solid fa-xmark"></i></button>
-    <img src="https://www2.0zz0.com/2025/10/11/00/983975517.png" alt="شرح طريقة عمل الأداة" title="اضغط على الصورة للإغلاق" loading="lazy">
-  </div>
-</div>
+<div id="toast-backdrop" hidden></div>
 
 <script>
 /* ===== إعداد القالب ===== */
@@ -216,23 +254,48 @@ const CELL_MAP={
 };
 const firstCell=a=>(a||'').split(':')[0].trim();
 const v=id=>(document.getElementById(id)?.value??'').trim();
-
-/* توزيع درجات التقييم على الأعمدة حسب المدى (E=ممتاز/F=جيد/G=متوسط/H=ضعيف) */
+/* === تصنيف الأعمدة حسب الدرجة (E..H) === */
+const RATING_COLS = { ex: 5, good: 6, mid: 7, weak: 8 };
 const EV_ROWS = { ev1:15, ev2:16, ev3:17, ev4:18, ev5:19, ev6:20, ev7:21 };
-function colForScore(val){ const s=Number(val)||0; return (s>=90)?'E':(s>=75)?'F':(s>=65)?'G':'H'; }
 
-/* ===== تحميل المكتبات عند الطلب ===== */
+function ratingColFor(score){
+  if (score >= 90) return RATING_COLS.ex;   // ممتاز 90–100
+  if (score >= 75) return RATING_COLS.good; // جيد 75–89
+  if (score >= 65) return RATING_COLS.mid;  // متوسط 65–74
+  return RATING_COLS.weak;                  // ضعيف <64
+}
+
+function writeScoreToBand(ws, evKey, score){
+  const rowNum = EV_ROWS[evKey];
+  if(!rowNum) return;
+  const row = ws.getRow(rowNum);
+  // نظّف نطاق E..H في هذا الصف
+  for(let c=RATING_COLS.ex; c<=RATING_COLS.weak; c++){ row.getCell(c).value = null; }
+  const sc = Number(score) || 0;
+  const targetCol = ratingColFor(sc);
+  row.getCell(targetCol).value = sc;
+}
+
+
+/* ===== تحميل كسول للمكتبات الثقيلة عند الطلب ===== */
 let libsLoaded=false;
 function loadHeavyLibs(){
   if(libsLoaded) return Promise.resolve();
-  const add=(src)=>new Promise((res,rej)=>{ const s=document.createElement('script'); s.src=src; s.async=true; s.onload=res; s.onerror=()=>rej(new Error('فشل تحميل '+src)); document.head.appendChild(s); });
-  return Promise.resolve()
-    .then(()=>add('https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js'))
-    .then(()=>add('https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js'))
-    .then(()=>{libsLoaded=true;});
+  return new Promise((resolve,reject)=>{
+    const add=(src)=>new Promise((res,rej)=>{
+      const s=document.createElement('script');
+      s.src=src; s.async=true; s.onload=()=>res(); s.onerror=()=>rej(new Error('فشل تحميل '+src));
+      document.head.appendChild(s);
+    });
+    Promise.resolve()
+      .then(()=>add('https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js'))
+      .then(()=>add('https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js'))
+      .then(()=>{libsLoaded=true; resolve();})
+      .catch(reject);
+  });
 }
 
-/* ===== لصق تقييم الآراء والبنود ===== */
+/* ===== لصق "تقييم آراء أصحاب المنشآت" ===== */
 const PASTE_MAP = [
   { idx:1,field:'emp_name' },{ idx:3,field:'id_no' },
   { idx:5,field:'lic_name' },{ idx:6,field:'sign_name' },
@@ -248,108 +311,312 @@ const PASTE_MAP = [
   { idx:19,field:'ev6',isEval:true },
   { idx:20,field:'ev7',isYesNo:true }
 ];
-function toAsciiDigits(s){return String(s||'').replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d));}
-function normalizeAr(s){return toAsciiDigits(String(s||'').trim()).replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/\s+/g,' ').toLowerCase();}
-function evalScoreFromText(t){const x=normalizeAr(t); if(!x) return 0; if(x.includes('راضي جدا جدا')||x==='راضي جدا') return 100; if(x==='راضي') return 80; if(x==='متوسط') return 70; if(x==='غير راضي') return 64; if(x.includes('غير راضي جدا')) return 25; const n=Number(x.replace(/[^0-9.]/g,'')); return Number.isFinite(n)?Math.max(0,Math.min(100,n)):0;}
-function yesNoToScore(t){const x=normalizeAr(t); if(x.startsWith('نعم')) return 100; if(x.startsWith('لا')||x==='كلا') return 25; return 0;}
-function pickDataLine(txt){const L=(txt||'').split(/\r?\n/).map(s=>s.trim()).filter(Boolean);return L[L.length-1]||'';}
-function parseDateFromText(s){const m=String(s||'').match(/(\d{4})[\/\-](\d{2})[\/\-](\d{2})/);return m?`${m[1]}-${m[2]}-${m[3]}`:'';}
 
+/* تحويل النصوص العربية إلى درجات */
+function toAsciiDigits(s){
+  return String(s||'')
+    .replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d))
+    .replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
+}
+function normalizeAr(s){
+  return toAsciiDigits(String(s||'').trim())
+    .replace(/[\u064B-\u065F\u0670\u0640]/g,'')
+    .replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي')
+    .replace(/\s+/g,' ').toLowerCase();
+}
+function evalScoreFromText(t){
+  const x = normalizeAr(t);
+  if(!x) return 0;
+  if(x.includes('راضي جدا جدا') || x==='راضي جدا') return 100;
+  if(x==='راضي') return 80;
+  if(x==='متوسط') return 70;
+  if(x==='غير راضي') return 64;
+  if(x.includes('غير راضي جدا') || x.includes('غير راض جدا')) return 25;
+  const num = Number(x.replace(/[^0-9.]/g,''));
+  return Number.isFinite(num) ? Math.max(0, Math.min(100, num)) : 0;
+}
+function yesNoToScore(t){
+  const x = normalizeAr(t);
+  if(x.startsWith('نعم')) return 100;
+  if(x.startsWith('لا') || x==='كلا') return 25;
+  return 0;
+}
+
+/* لصق من تقييم الآراء */
+function pickDataLine(txt){
+  const lines=(txt||'').split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+  return lines[lines.length-1]||'';
+}
+function parseDateFromText(s){
+  const m = String(s||'').match(/(\d{4})[\/\-](\d{2})[\/\-](\d{2})/);
+  if(!m) return '';
+  return `${m[1]}-${m[2]}-${m[3]}`;
+}
 let highlightActive=false;
 function fillFromPastedRow(txt){
-  const line=pickDataLine(txt); if(!line) return;
+  const line=pickDataLine(txt);
+  if(!line) return;
   const parts=line.split(/\t|\|/).map(s=>s.trim());
-  const d=parseDateFromText(parts[0]||''); if(d){const el=document.getElementById('date'); if(el) el.value=d;}
-  PASTE_MAP.forEach(m=>{const val=parts[m.idx]??'';const el=document.getElementById(m.field);if(!el)return;
-    if(m.isEval){el.value=evalScoreFromText(val);el.dispatchEvent(new Event('input',{bubbles:true}));}
-    else if(m.isYesNo){el.value=yesNoToScore(val);el.dispatchEvent(new Event('input',{bubbles:true}));}
-    else{if(val) el.value=val;}
+
+  const d = parseDateFromText(parts[0]||'');
+  if(d){ const el=document.getElementById('date'); if(el) el.value = d; }
+
+  PASTE_MAP.forEach(m=>{
+    const val = parts[m.idx] ?? '';
+    const el  = document.getElementById(m.field);
+    if(!el) return;
+    if(m.isEval){
+      el.value = evalScoreFromText(val);
+      el.dispatchEvent(new Event('input',{bubbles:true}));
+    }else if(m.isYesNo){
+      el.value = yesNoToScore(val);
+      el.dispatchEvent(new Event('input',{bubbles:true}));
+    }else{
+      if(val) el.value = val;
+    }
   });
+
   highlightActive=true; highlightEmptyFields();
 }
 
-/* البنود المرصودة */
+/* Parser TSV للبنود المرصودة */
 function parseTSVRows(txt){
-  const rows=[]; let row=[],field=''; let q=false;
-  for(let i=0;i<txt.length;i++){const ch=txt[i];
-    if(ch=='"'){ if(q && txt[i+1]=='"'){field+='"';i++;} else q=!q; }
-    else if(ch=='\t'&&!q){row.push(field);field='';}
-    else if((ch=='\n'||ch=='\r')&&!q){ if(field!==''||row.length>0){row.push(field);rows.push(row);row=[];field='';} if(ch=='\r'&&txt[i+1]=='\n') i++; }
-    else field+=ch;
+  const rows=[]; let row=[], field=''; let inQuotes=false;
+  for(let i=0;i<txt.length;i++){
+    const ch=txt[i];
+    if(ch === '"'){
+      if(inQuotes && txt[i+1] === '"'){ field+='"'; i++; } else { inQuotes = !inQuotes; }
+    }else if(ch === '\t' && !inQuotes){
+      row.push(field); field='';
+    }else if((ch === '\n' || ch === '\r') && !inQuotes){
+      if(field!=='' || row.length>0){ row.push(field); rows.push(row); row=[]; field=''; }
+      if(ch === '\r' && txt[i+1] === '\n') i++;
+    }else{
+      field += ch;
+    }
   }
-  if(field!==''||row.length>0){row.push(field);rows.push(row);}
+  if(field!=='' || row.length>0){ row.push(field); rows.push(row); }
   return rows.filter(r=>r.some(x=>x.trim()!==''));
 }
+
+/* لصق البنود المرصودة → 9 أسطر + الباقي */
 function fillFromObservedRow(txt){
-  const rows=parseTSVRows(txt); if(!rows.length) return;
-  const parts=rows[rows.length-1];
-  const observed=(parts[4]||'').trim();
-  const lines=observed.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
-  for(let i=0;i<9;i++){const el=document.getElementById('note'+(i+1)); if(el) el.value=lines[i]||'';}
-  document.getElementById('note_extra').value=lines.slice(9).join('\n');
+  const rows = parseTSVRows(txt);
+  if(!rows.length) return;
+  const parts = rows[rows.length-1];
+  const observedRaw = (parts[4]||'').trim();
+  const lines = observedRaw.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+
+  for(let i=0;i<9;i++){
+    const el=document.getElementById('note'+(i+1));
+    if(el) el.value = lines[i] || '';
+  }
+  document.getElementById('note_extra').value = lines.slice(9).join('\n');
+
   highlightActive=true; highlightEmptyFields();
 }
 
-/* دمج بندين */
+/* دمج كل بندين */
 function mergePairs(){
-  const all=[]; for(let i=1;i<=9;i++){const t=(document.getElementById('note'+i).value||'').trim(); if(t) all.push(t);}
-  const extra=(document.getElementById('note_extra').value||'').split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+  const all=[];
+  for(let i=1;i<=9;i++){
+    const vv=(document.getElementById('note'+i).value||'').trim();
+    if(vv) all.push(vv);
+  }
+  const extra=(document.getElementById('note_extra').value||'')
+    .split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
   all.push(...extra);
-  if(all.length<=9){ notify('warn','ما فيه حاجة للدمج؛ عدد البنود لا يتجاوز 9.'); return; }
-  const merged=[]; for(let i=0;i<all.length;i+=2){ merged.push(i+1<all.length? all[i]+' | '+all[i+1] : all[i]); }
-  for(let i=1;i<=9;i++){ document.getElementById('note'+i).value = merged[i-1] || ''; }
+
+  if(all.length<=9){ notify('warn','لايوجد بنود لدمجها ؛ عدد البنود لا يتجاوز 9.'); return; }
+
+  const merged=[];
+  for(let i=0;i<all.length;i+=2){
+    if(i+1<all.length) merged.push(all[i]+' | '+all[i+1]);
+    else merged.push(all[i]);
+  }
+  for(let i=1;i<=9;i++){
+    document.getElementById('note'+i).value = merged[i-1] || '';
+  }
   document.getElementById('note_extra').value = merged.slice(9).join('\n');
+
   if(highlightActive) highlightEmptyFields();
 }
 
 /* تمييز الخانات الفارغة */
-const EMPTY_IDS=['date','id_no','emp_name','license_no','lic_name','sign_name','municipality','district','street','owner_name','agent_name','phone1','phone2','field_sup_sign','note1','note2','note3','note4','note5','note6','note7','note8','note9','note_extra'];
-function highlightEmptyFields(){EMPTY_IDS.forEach(id=>{const el=document.getElementById(id); if(!el) return; el.classList.toggle('is-empty',(el.value||'').trim()==='');});}
-function clearEmptyHighlights(){EMPTY_IDS.forEach(id=>{const el=document.getElementById(id); if(el) el.classList.remove('is-empty');});}
-EMPTY_IDS.forEach(id=>{const el=document.getElementById(id); if(!el) return; el.addEventListener('input',()=>{if(highlightActive) highlightEmptyFields();});});
+const EMPTY_IDS = [
+  'date','id_no','emp_name','license_no','lic_name','sign_name',
+  'municipality','district','street','owner_name','agent_name',
+  'phone1','phone2','field_sup_sign',
+  'note1','note2','note3','note4','note5','note6','note7','note8','note9','note_extra'
+];
+function highlightEmptyFields(){
+  EMPTY_IDS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    const isEmpty = (el.value||'').trim()==='';
+    el.classList.toggle('is-empty', isEmpty);
+  });
+}
+function clearEmptyHighlights(){
+  EMPTY_IDS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.classList.remove('is-empty');
+  });
+}
+/* تحديث التمييز أثناء الكتابة */
+EMPTY_IDS.forEach(id=>{
+  const el=document.getElementById(id);
+  if(!el) return;
+  el.addEventListener('input', ()=>{ if(highlightActive) highlightEmptyFields(); });
+});
 
 /* مسح/تراجع */
-const ALL_FIELD_IDS=[...EMPTY_IDS,'ev1','ev2','ev3','ev4','ev5','ev6','ev7','paste_row','paste_row_observed'];
-function snapshotFields(){const s={};ALL_FIELD_IDS.forEach(id=>{const el=document.getElementById(id); if(el) s[id]=el.value;}); s._h=highlightActive; return s;}
-function applySnapshot(s){if(!s)return;ALL_FIELD_IDS.forEach(id=>{const el=document.getElementById(id); if(!el) return; if(s.hasOwnProperty(id)){ el.value=s[id]??''; if(/^ev[1-7]$/.test(id)){ el.dispatchEvent(new Event('input',{bubbles:true})); }}});highlightActive=!!s._h; if(highlightActive) highlightEmptyFields(); else clearEmptyHighlights();}
+const ALL_FIELD_IDS = [
+  ...EMPTY_IDS,
+  'ev1','ev2','ev3','ev4','ev5','ev6','ev7',
+  'paste_row','paste_row_observed'
+];
+function snapshotFields(){
+  const snap={};
+  ALL_FIELD_IDS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    snap[id]=el.value;
+  });
+  snap._highlightActive = highlightActive;
+  return snap;
+}
+function applySnapshot(snap){
+  if(!snap) return;
+  ALL_FIELD_IDS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    if(snap.hasOwnProperty(id)){
+      el.value = snap[id] ?? '';
+      if(/^ev[1-7]$/.test(id)){
+        el.dispatchEvent(new Event('input',{bubbles:true}));
+      }
+    }
+  });
+  highlightActive = !!snap._highlightActive;
+  if(highlightActive) highlightEmptyFields(); else clearEmptyHighlights();
+}
 let lastSnapshot=null;
 function clearFields(){
-  lastSnapshot=snapshotFields();
-  ['paste_row','paste_row_observed'].forEach(id=>{const el=document.getElementById(id); if(el) el.value='';});
-  EMPTY_IDS.forEach(id=>{const el=document.getElementById(id); if(el) el.value='';});
-  for(let i=1;i<=7;i++){const el=document.getElementById('ev'+i); if(el){el.value=70; el.dispatchEvent(new Event('input',{bubbles:true}));}}
-  ['ev4','ev7'].forEach(id=>{const el=document.getElementById(id); if(el){el.value=0; el.dispatchEvent(new Event('input',{bubbles:true}));}});
+  lastSnapshot = snapshotFields();
+  ['paste_row','paste_row_observed'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.value='';
+  });
+  EMPTY_IDS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.value='';
+  });
+  for(let i=1;i<=7;i++){
+    const el=document.getElementById('ev'+i);
+    if(el){ el.value=70; el.dispatchEvent(new Event('input',{bubbles:true})); }
+  }
+  /* ev4 & ev7 افتراضي لا */
+  ['ev4','ev7'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){ el.value=0; el.dispatchEvent(new Event('input',{bubbles:true})); }
+  });
   highlightActive=false; clearEmptyHighlights();
-  document.getElementById('undoBtn').disabled=false;
+  document.getElementById('undoBtn').disabled = false;
 }
-function undoClear(){applySnapshot(lastSnapshot);document.getElementById('undoBtn').disabled=true;}
+function undoClear(){
+  applySnapshot(lastSnapshot);
+  document.getElementById('undoBtn').disabled = true;
+}
 
-/* تنسيق القيم */
-function formatDateStr(d){if(!d) return '';const dt=new Date(d);if(Number.isNaN(dt.getTime())) return d;const y=dt.getFullYear(),m=String(dt.getMonth()+1).padStart(2,'0'),dd=String(dt.getDate()).padStart(2,'0');return `${y}/${m}/${dd}`;}
-function composeValue(k,r){if(k==='emp_name'&&r){return `اسم الموظف     ${r}     Employee’s Name`;} if(k==='date'){const s=formatDateStr(r);return s?`التاريخ : ${s}`:'';} if(k==='id_no'&&r){return `رقم الموظف    ${r}    ID No. `;} return r;}
+/* تنسيق التاريخ / تركيب القيمة */
+function formatDateStr(d){
+  if(!d) return '';
+  const dt=new Date(d);
+  if(Number.isNaN(dt.getTime())) return d;
+  const y=dt.getFullYear(),m=String(dt.getMonth()+1).padStart(2,'0'),dd=String(dt.getDate()).padStart(2,'0');
+  return `${y}/${m}/${dd}`;
+}
+function composeValue(k,r){
+  if(k==='emp_name'&&r){return `اسم الموظف     ${r}     Employee’s Name`;}
+  if(k==='date'){const s=formatDateStr(r);return s?`التاريخ : ${s}`:'';}
+  if(k==='id_no'&&r){return `رقم الموظف    ${r}    ID No. `;}
+  return r;
+}
 
-/* سلوك السلايدرات */
-function levelInfo(v){if(v>=100) return {c:"#86efac",l:"راضي جدا 100"}; if(v>=80) return {c:"#bbf7d0",l:"راضي 80"}; if(v>=70) return {c:"#fde68a",l:"متوسط 70"}; if(v>=64) return {c:"#fbbf24",l:"غير راضي 64"}; return {c:"#fca5a5",l:"غير راضي جدا 25"};}
-function paintRange(i,v){const p=Math.max(0,Math.min(100,Number(v)||0)),{c}=levelInfo(p);i.style.background=`linear-gradient(to right, ${c} 0%, ${c} ${p}%, #e5e7eb ${p}%, #e5e7eb 100%)`;}
-function hookRange(id){const el=document.getElementById(id),num=document.getElementById(id+'v'),lbl=document.getElementById(id+'l');const up=()=>{const val=Math.max(0,Math.min(100,Number(el.value)||0));num.textContent=val;lbl.textContent=levelInfo(val).l;paintRange(el,val);};el.addEventListener('input',up);up();}
+/* ألوان الشريط + التسميات */
+function levelInfo(v){
+  if(v>=100) return {c:"#86efac", l:"1ضي جدا 100"};
+  if(v>=80) return {c:"#bbf7d0", l:"راضي 80"};
+  if(v>=70) return {c:"#fde68a", l:"متوسط 70"};
+  if(v>=64) return {c:"#fbbf24", l:"غير راضي 64"};
+  return           {c:"#fca5a5", l:"غير راضي جدا 25"};
+}
+function paintRange(i,v){
+  const p=Math.max(0,Math.min(100,Number(v)||0)), {c}=levelInfo(p);
+  i.style.background=`linear-gradient(to right, ${c} 0%, ${c} ${p}%, #e5e7eb ${p}%, #e5e7eb 100%)`;
+}
+function hookRange(id){
+  const el=document.getElementById(id), num=document.getElementById(id+'v'), lbl=document.getElementById(id+'l');
+  const up=()=>{const val=Math.max(0,Math.min(100,Number(el.value)||0)); num.textContent=val; lbl.textContent=levelInfo(val).l; paintRange(el,val);};
+  el.addEventListener('input',up); up();
+}
 ['ev1','ev2','ev3','ev4','ev5','ev6','ev7'].forEach(hookRange);
 
-/* نعم/لا لـ ev4 و ev7 (0 أو 100) */
-(function enforceYesNo(){['ev4','ev7'].forEach(id=>{const el=document.getElementById(id); if(!el) return; const num=document.getElementById(id+'v'),lbl=document.getElementById(id+'l'); const snap=()=>{let v=Number(el.value)||0; v=v>=50?100:0; el.value=v; if(num) num.textContent=v; if(lbl) lbl.textContent=(v===100?'نعم 100':'لا 0'); el.style.background=`linear-gradient(to right, ${v===100?'#86efac':'#fca5a5'} 0%, ${v===100?'#86efac':'#fca5a5'} ${v}%, #e5e7eb ${v}%, #e5e7eb 100%)`;}; el.addEventListener('input',snap); snap();});})();
+/* نعم/لا لـ ev4 و ev7 (قفز تلقائي 0 أو 100 + تسمية) */
+(function enforceYesNo(){
+  ['ev4','ev7'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(!el) return;
+    const num=document.getElementById(id+'v'), lbl=document.getElementById(id+'l');
+    const snap = ()=>{
+      let v = Number(el.value)||0;
+      v = v >= 50 ? 100 : 0;
+      el.value = v;
+      if(num) num.textContent = v;
+      if(lbl) lbl.textContent = (v===100 ? 'نعم 100' : 'لا 0');
+      el.style.background = `linear-gradient(to right, ${v===100?'#86efac':'#fca5a5'} 0%, ${v===100?'#86efac':'#fca5a5'} ${v}%, #e5e7eb ${v}%, #e5e7eb 100%)`;
+    };
+    el.addEventListener('input', snap);
+    snap();
+  });
+})();
 
-/* إشعار "حسناً" */
-function notify(type,msg){
+/* اسم الملف */
+function makeFilename(empRaw,dateRaw){
+  const ds=(()=>{if(!dateRaw)return'';const dt=new Date(dateRaw);if(Number.isNaN(dt.getTime()))return String(dateRaw).replace(/\//g,'-');const y=dt.getFullYear(),m=String(dt.getMonth()+1).padStart(2,'0'),d=String(dt.getDate()).padStart(2,'0');return`${y}-${m}-${d}`;})();
+  const emp=(empRaw||'').trim().replace(/\s+/g,' ');
+  const safeEmp=emp.replace(/[\\/:*?"<>|]/g,' ');
+  return safeEmp && ds ? `تقييم المنشات - ${safeEmp} ${ds}.xlsx`
+       : safeEmp       ? `تقييم المنشات - ${safeEmp}.xlsx`
+       : ds            ? `تقييم المنشات - ${ds}.xlsx`
+                       : `تقييم المنشات.xlsx`;
+}
+
+/* إشعار وسط الشاشة بزر "حسناً" */
+function notify(type, msg){
   const host=document.getElementById('toasts'); if(!host) return;
-  const box=document.createElement('div'); box.className='toast '+(type||'ok'); box.setAttribute('role','dialog'); box.setAttribute('aria-modal','true');
+  let bd=document.getElementById('toast-backdrop');
+  if(!bd){ bd=document.createElement('div'); bd.id='toast-backdrop'; document.body.appendChild(bd); }
+  bd.style.display='block'; bd.removeAttribute('hidden');
+
+  const box=document.createElement('div');
+  box.className='toast '+(type||'ok');
+  box.setAttribute('role','dialog'); box.setAttribute('aria-modal','true');
+
   const p=document.createElement('div'); p.style.margin='0 6px 8px'; p.textContent=msg;
   const btn=document.createElement('button'); btn.type='button'; btn.className='toast-btn'; btn.textContent='حسناً';
-  btn.addEventListener('click',()=>box.remove());
+
+  const close=()=>{ box.remove(); if(!host.querySelector('.toast')){ bd.style.display='none'; bd.setAttribute('hidden',''); } };
+  btn.addEventListener('click', close);
+  box.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key==='Escape'){ close(); } });
+
   box.appendChild(p); box.appendChild(btn); host.appendChild(box);
   setTimeout(()=>btn.focus(),0);
 }
 
 /* حفظ متوافق مع iOS */
-function saveBlobExcel(buffer,filename){
+function saveBlobExcel(buffer, filename){
   try{
     saveAs(new Blob([buffer],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}), filename);
   }catch(_){
@@ -357,10 +624,11 @@ function saveBlobExcel(buffer,filename){
       const blob=new Blob([buffer],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
       const url=URL.createObjectURL(blob);
       const a=document.createElement('a'); a.href=url; a.download=filename; document.body.appendChild(a);
-      a.click(); setTimeout(()=>{URL.revokeObjectURL(url); a.remove();},1200);
+      a.click();
+      setTimeout(()=>{URL.revokeObjectURL(url); a.remove();}, 1200);
     }catch(e){
       const url=URL.createObjectURL(new Blob([buffer]));
-      window.open(url,'_blank');
+      window.open(url, '_blank');
     }
   }
 }
@@ -370,9 +638,10 @@ async function fillAndDownload(){
   try{
     const f=document.getElementById('tpl').files[0];
     if(!f){ notify('warn','اختر ملف القالب أولاً'); return; }
+
     await loadHeavyLibs();
 
-    const wb=new ExcelJS.Workbook(); await wb.xlsx.load(await f.arrayBuffer());
+    const wb=new ExcelJS.Workbook();await wb.xlsx.load(await f.arrayBuffer());
     let ws=wb.getWorksheet(SHEET_NAME)||wb.worksheets?.[0];
     if(!ws){ notify('warn','لا توجد ورقة عمل داخل القالب'); return; }
 
@@ -393,41 +662,33 @@ async function fillAndDownload(){
       field_sup_sign:v('field_sup_sign')
     };
 
-    /* كتابة القيم مع توزيع التقييمات على الأعمدة */
-    for (const [k, r] of Object.entries(data)) {
-      if (/^ev[1-7]$/.test(k)) {
-        const row = EV_ROWS[k]; if (!row) continue;
-        const score = Number(r) || 0;
-        ['E','F','G','H'].forEach(col => { ws.getCell(col + row).value = ''; });
-        const col = colForScore(score);
-        ws.getCell(col + row).value = score;
-      } else {
-        const addr = firstCell(CELL_MAP[k]); if (!addr) continue;
-        const c = ws.getCell(addr);
-        if (c && c.value && typeof c.value === 'object' && 'formula' in c.value) continue;
-        c.value = composeValue(k, r);
-      }
-    }
+    
+for (const [k, r] of Object.entries(data)){
+  if (/^ev[1-7]$/.test(k)){
+    writeScoreToBand(ws, k, r);
+    continue;
+  }
+  const addr = firstCell(CELL_MAP[k]); if(!addr) continue;
+  const c = ws.getCell(addr);
+  if(c && c.value && typeof c.value==='object' && 'formula' in c.value) continue;
+  c.value = composeValue(k, r);
+}
+
 
     const out=await wb.xlsx.writeBuffer();
     saveBlobExcel(out, makeFilename(emp,date));
     notify('ok','لاتنسى مراجعة ملف الاكسل قبل ارسالها للايميل');
+
   }catch(e){
     console.error(e);
     notify('err','حدث خطأ أثناء إنشاء الملف');
   }
 }
 
-/* اسم الملف */
-function makeFilename(empRaw,dateRaw){
-  const ds=(()=>{if(!dateRaw)return'';const dt=new Date(dateRaw);if(Number.isNaN(dt.getTime()))return String(dateRaw).replace(/\//g,'-');const y=dt.getFullYear(),m=String(dt.getMonth()+1).padStart(2,'0'),d=String(dt.getDate()).padStart(2,'0');return`${y}-${m}-${d}`;})();
-  const emp=(empRaw||'').trim().replace(/\s+/g,' ');
-  const safeEmp=emp.replace(/[\\/:*?"<>|]/g,' ');
-  return safeEmp && ds ? `تقييم المنشات - ${safeEmp} ${ds}.xlsx`
-       : safeEmp       ? `تقييم المنشات - ${safeEmp}.xlsx`
-       : ds            ? `تقييم المنشات - ${ds}.xlsx`
-                       : `تقييم المنشات.xlsx`;
-}
+/* زر للأعلى */
+const toTopBtn=document.getElementById('toTop');
+window.addEventListener('scroll', ()=>{ toTopBtn.style.display = window.scrollY > 320 ? 'flex' : 'none'; },{passive:true});
+toTopBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
 /* ربط الأحداث */
 document.getElementById('downloadBtn')?.addEventListener('click', fillAndDownload);
@@ -445,19 +706,19 @@ document.getElementById('mergePairsBtn')?.addEventListener('click', mergePairs);
 document.getElementById('clearBtn')?.addEventListener('click', clearFields);
 document.getElementById('undoBtn')?.addEventListener('click', undoClear);
 
-/* زر للأعلى */
-const toTopBtn=document.getElementById('toTop');
-window.addEventListener('scroll',()=>{ toTopBtn.style.display = window.scrollY>320 ? 'flex' : 'none'; },{passive:true});
-toTopBtn.addEventListener('click',()=> window.scrollTo({top:0,behavior:'smooth'}));
-
-/* شرح الأداة (فتح/إغلاق) */
+/* نافذة الشرح */
 document.getElementById('howtoBtn')?.addEventListener('click', ()=>{ document.getElementById('howtoModal')?.classList.add('show'); });
 document.getElementById('howtoClose')?.addEventListener('click', ()=>{ document.getElementById('howtoModal')?.classList.remove('show'); });
-document.getElementById('howtoModal')?.addEventListener('click', (e)=>{ if(e.target.id==='howtoModal' || e.target.classList.contains('backdrop')){ document.getElementById('howtoModal')?.classList.remove('show'); } });
+document.getElementById('howtoModal')?.addEventListener('click', (e)=>{ if(e.target.id==='howtoModal' || e.target.classList.contains('modal-backdrop')){ document.getElementById('howtoModal')?.classList.remove('show'); } });
 document.querySelector('#howtoModal img')?.addEventListener('click', ()=>{ document.getElementById('howtoModal')?.classList.remove('show'); });
 document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ document.getElementById('howtoModal')?.classList.remove('show'); } });
 </script>
 
-<footer style="margin:3px auto 8px;max-width:1000px;text-align:center;color:#475569;font-size:14px">الإصدار <b>1.0.5</b></footer>
+<footer style="margin:3px auto 3px;max-width:1000px;text-align:center;color:#475569;font-size:14px;line-height:1.3">
+  <div>راشد سعد راشد الدوسري</div>
+  <div>أداة اراء المنشأت</div>
+  <div>الاصدار <b>1.0.6</b> </div>
+</footer>
+
 </body>
 </html>
