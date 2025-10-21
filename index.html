@@ -115,9 +115,50 @@
   .toast.ok{background:#111}.toast.warn{background:#202b3a}.toast.err{background:#3a2020}
   .toast .toast-btn{position:absolute;left:12px;right:12px;bottom:10px;padding:10px 12px;border-radius:10px;border:1px solid #ffffff2a;background:#2563eb;color:#fff;font-weight:700;cursor:pointer}
   #toast-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:99998;display:none}
+
+  /* ===== شاشة الانتظار (نُقلت هنا كما هي من الواجهة) ===== */
+  #splash{
+    position:fixed;
+    inset:0;
+    background: #f5f5f5;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    z-index:100000;
+    transition:opacity .25s ease;
+  }
+  #splash.hide{opacity:0;pointer-events:none;}
+  #logo{
+    width: 90px;
+    height: 90px;
+    border-radius:12px;
+    object-fit:contain;
+    opacity: 0.20;
+  }
+  .bar{
+    width:min(320px,70vw);
+    height: 20px;
+    background: #e1e1e1;
+    border-radius:999px;
+    overflow:hidden;
+    box-shadow: inset 0 0 0 0px #0000000f;
+  }
+  .bar-fill{
+    width:0%;height:100%;background:#2563eb; /* أزرق */
+    border-radius:999px;transition:none;
+  }
 </style>
 </head>
 <body>
+
+<!-- شاشة الانتظار (داخل الأداة الآن) -->
+<div id="splash" aria-hidden="false">
+  <img id="logo" src="https://www2.0zz0.com/2025/10/13/21/119171912.png" alt="الشعار">
+  <div class="bar"><div id="barFill" class="bar-fill"></div></div>
+</div>
+
 <div class="wrap">
   <div class="card">
     <h1>نموذج التقييم  ( آراء المنشآت )</h1>
@@ -712,12 +753,32 @@ document.getElementById('howtoClose')?.addEventListener('click', ()=>{ document.
 document.getElementById('howtoModal')?.addEventListener('click', (e)=>{ if(e.target.id==='howtoModal' || e.target.classList.contains('modal-backdrop')){ document.getElementById('howtoModal')?.classList.remove('show'); } });
 document.querySelector('#howtoModal img')?.addEventListener('click', ()=>{ document.getElementById('howtoModal')?.classList.remove('show'); });
 document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ document.getElementById('howtoModal')?.classList.remove('show'); } });
+
+/* ===== شاشة الانتظار داخل الأداة: 3 ثواني ثم تختفي ===== */
+(function splashInsideTool(){
+  const DURATION = 3000; // 3 ثواني
+  const splash = document.getElementById('splash');
+  const bar    = document.getElementById('barFill');
+  if(!splash || !bar) return;
+  const start = performance.now();
+  function tick(now){
+    const pct = Math.min(1, (now - start) / DURATION);
+    bar.style.width = (pct*100).toFixed(2)+'%';
+    if(pct >= 1){
+      splash.classList.add('hide');
+      setTimeout(()=>{ splash.style.display='none'; }, 260);
+    }else{
+      requestAnimationFrame(tick);
+    }
+  }
+  requestAnimationFrame(tick);
+})();
 </script>
 
 <footer style="margin:3px auto 3px;max-width:1000px;text-align:center;color:#475569;font-size:14px;line-height:1.3">
   <div>راشد سعد راشد الدوسري</div>
   <div>أداة اراء المنشأت</div>
-  <div>الاصدار <b>1.0.6</b> </div>
+  <div>الاصدار <b>1.0.1</b> </div>
 </footer>
 
 </body>
